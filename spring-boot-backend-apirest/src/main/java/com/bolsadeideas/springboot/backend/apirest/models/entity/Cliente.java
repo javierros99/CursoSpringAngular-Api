@@ -2,8 +2,10 @@ package com.bolsadeideas.springboot.backend.apirest.models.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -15,15 +17,15 @@ public class Cliente implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long id;
+	private Long id;
 	
-	public String nombre;
+	private String nombre;
 	
-	public String apellido;
+	private String apellido;
 	
-	public String email;
+	private String email;
 	
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
-	public Date createAt;
+	private LocalDate createAt;
 }

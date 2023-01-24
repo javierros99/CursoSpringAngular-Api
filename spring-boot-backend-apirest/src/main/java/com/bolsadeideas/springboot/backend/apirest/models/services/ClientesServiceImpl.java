@@ -10,15 +10,30 @@ import com.bolsadeideas.springboot.backend.apirest.models.dao.IClienteDao;
 import com.bolsadeideas.springboot.backend.apirest.models.entity.Cliente;
 
 @Service
+@Transactional
 public class ClientesServiceImpl implements IClienteService{
 
 	@Autowired
 	private  IClienteDao clienteDao;
 	
 	@Override
-	@Transactional(readOnly = true)
 	public List<Cliente> findAll() {
 		return (List<Cliente>) clienteDao.findAll();
+	}
+
+	@Override
+	public Cliente save(Cliente cliente) {
+		return clienteDao.save(cliente);
+	}
+
+	@Override
+	public void delete(Long id) {
+		clienteDao.deleteById(id);
+	}
+
+	@Override	
+	public Cliente findById(Long id) {
+		return clienteDao.findById(id).orElse(null);
 	}
 
 }
